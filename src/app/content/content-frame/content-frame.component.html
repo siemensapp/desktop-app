@@ -1,0 +1,14 @@
+<app-esri-map [center]="mapCenter" [basemap]="basemapType" [zoom]="mapZoomLevel"
+  (mapLoadedEvent)="mapLoadedEvent($event)">
+</app-esri-map>
+<div>
+  <div id=barraNavegacion>
+    <div id="creacion">
+      <i class="fas fa-home" id="home" routerLink='/home'></i>
+      <a routerLink='/home/formularioEspecialista'><button type="button" class="btnNavbar">+ Especialista</button></a>
+      <a routerLink='/home/formularioAsignacion'><button type="button" class="btnNavbar">+ Asignacion</button></a>
+      <a href="/home/cronograma#popup1"><button type="button" class="btnNavbar">Cronograma</button></a>
+    </div>
+    <hr>
+    <router-outlet></router-outlet>
+  </div>
