@@ -22,10 +22,10 @@ export class LoginComponent implements OnInit {
       //Swal.close();
       if (!result.hasOwnProperty('token')) Swal.fire({type: "error", title: "Error", text: String(result)});
       else {
-        // Saves user number
+        // Saves user Email
         
         
-        localStorage.setItem('token', result['token']);
+        localStorage.setItem('user', result['user']);
 
         Swal.fire({type: "success", title: "Exito", text: 'Inicio de sesiòn exitoso.'})
           .then(() => { this.router.navigate(['home/workers']) });

@@ -72,7 +72,7 @@ export class EditarEspecialistaComponent implements OnInit {
                      datos4,
                      'success'
                     )
-                    this.router.navigate(['']);
+                    this.router.navigate(['/home']);
                 }
                 else{
                   Swal.fire(
