@@ -24,8 +24,7 @@ export class EditarEspecialistaComponent implements OnInit {
         campoImagen.src = URL.createObjectURL((<HTMLInputElement>event.target).files[0]);
         //Crear version base 64 de la img
         var fileReader = new FileReader();
-        fileReader.addEventListener("load", (e) => {
-           
+        fileReader.addEventListener("load", (e:any) => {
            document.getElementById("resultadoImagen").innerHTML = e.target.result;
            this.fotoNueva=e.target.result;
            

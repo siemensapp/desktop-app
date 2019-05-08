@@ -14,8 +14,8 @@ import * as jsPDF from 'jspdf';
 export class CronogramaComponent implements OnInit {
 
   constructor(private httpService: HttpClient, private dataRetriever: DataRetrieverService) { }
-  Asignaciones: JSON[];
-  resultados: JSON[];
+  Asignaciones;
+  resultados;
   datos: JSON[];
   infoAsignacion: {};
   infoAsignacion2: {};
@@ -49,7 +49,7 @@ export class CronogramaComponent implements OnInit {
         confirmButtonColor: "blue",
         cancelButtonColor: "red",
         confirmButtonText: "VER MAS INFORMACION",
-        cancelButtonText: "ELIMINAR",
+        cancelButtonText: "ELIMINAR"
       }).then((result) => {
           if(result.value){
               var idEspecialista = <HTMLTableElement> document.getElementById('tablaEspecialistas1');
@@ -94,7 +94,7 @@ export class CronogramaComponent implements OnInit {
                 
                 
           }
-          else{
+          else if(String(result.dismiss) == "cancel"){
               var idEspecialista = <HTMLTableElement> document.getElementById('tablaEspecialistas1');
               var IdEspecialista = idEspecialista.rows[fila].id;
               var Fecha = <HTMLInputElement> document.getElementById('fecha');
@@ -206,9 +206,10 @@ export class CronogramaComponent implements OnInit {
     var diasDelMes= new Date(parseInt(fechaHoy.split("-")[0]), parseInt(fechaHoy.split("-")[1]), 0).getDate();    
     this.setFecha(fechaHoyMA+"-"+"01");
     var tabla=<HTMLTableElement>document.getElementById("tablaAsignacionesID");
-    tabla.addEventListener("click", (event) => {
-       var columna = (<HTMLTableColElement>event.target).attributes[0].ownerElement.cellIndex+1;
-       var fila = (<HTMLTableRowElement>event.target).attributes[0].ownerElement.parentNode.rowIndex;
+    tabla.addEventListener("click", (event:any) => {
+       var columna = (<HTMLTableDataCellElement>event.target.attributes[0].ownerElement).cellIndex+1;
+       console.log(columna);
+       var fila = (<HTMLTableRowElement>event.target.attributes[0].ownerElement.parentNode).rowIndex;
        var estiloCelda = (<HTMLTableCellElement>event.target).attributes[0].ownerElement; 
        this.menuAsignacion(columna, fila, estiloCelda);
     });
@@ -248,7 +249,7 @@ export class CronogramaComponent implements OnInit {
      }
       var x;
      for(var i=0; i<this.Asignaciones.length;i++){
-       var ids = document.getElementById(this.Asignaciones[i]['IdEspecialista']).rowIndex;
+       var ids = (<HTMLTableRowElement>document.getElementById(this.Asignaciones[i]['IdEspecialista'])).rowIndex;
        x = tableA.rows[ids].cells;
           if(parseInt((this.Asignaciones[i]['FechaInicio'].split("T")[0]).split("-")[1]) == parseInt((this.Asignaciones[i]['FechaFin'].split("T")[0]).split("-")[1])){          
             for(var j=(parseInt((this.Asignaciones[i]['FechaInicio'].split("T")[0]).split("-")[2])-1);j<(parseInt((this.Asignaciones[i]['FechaFin'].split("T")[0]).split("-")[2]));j++){
@@ -285,7 +286,7 @@ export class CronogramaComponent implements OnInit {
        var fecha=(<HTMLInputElement>event.target).value;
        var diasDelMesN= new Date( parseInt(fecha.split("-")[0]) , parseInt(fecha.split("-")[1]), 0).getDate(); 
        this.setFecha(fecha+"-"+"01");
-        var tabla=document.getElementById("tablaAsignacionesID");
+        var tabla=<HTMLTableElement>document.getElementById("tablaAsignacionesID");
         tabla.deleteRow(0);
         var header = tabla.createTHead();
         var row = header.insertRow(0);
@@ -313,7 +314,7 @@ export class CronogramaComponent implements OnInit {
                fila = tableA.deleteRow(i);
                }
                tableA.deleteRow(1);
-               for(var i=0; i<this.resultados.length;i++){
+               for(let i=0; i<this.resultados.length;i++){
                tableA = document.getElementById("tablaAsignacionesID");
                fila = tableA.insertRow(i+1);
                
@@ -323,8 +324,8 @@ export class CronogramaComponent implements OnInit {
                }
                }
             var x;
-           for(var i=0; i<this.Asignaciones.length;i++){
-             var ids = document.getElementById(this.Asignaciones[i]['IdEspecialista']).rowIndex;
+           for(let i=0; i<this.Asignaciones.length;i++){
+             var ids = (<HTMLTableRowElement>document.getElementById(this.Asignaciones[i]['IdEspecialista'])).rowIndex;
              x = tableA.rows[ids].cells;
                 if(parseInt((this.Asignaciones[i]['FechaInicio'].split("T")[0]).split("-")[1]) == parseInt((this.Asignaciones[i]['FechaFin'].split("T")[0]).split("-")[1])){          
                   for(var j=(parseInt((this.Asignaciones[i]['FechaInicio'].split("T")[0]).split("-")[2])-1);j<(parseInt((this.Asignaciones[i]['FechaFin'].split("T")[0]).split("-")[2]));j++){

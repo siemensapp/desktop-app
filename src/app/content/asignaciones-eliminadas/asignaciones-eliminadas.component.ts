@@ -16,8 +16,8 @@ export class AsignacionesEliminadasComponent implements OnInit {
 
   agregarListener(){
     document.getElementById('fecha').addEventListener("change", (event) => {
-      var fecha = document.getElementById('fecha').attributes[2].ownerDocument.activeElement.value;
-      var texto = document.getElementById('buscar').attributes[2].ownerElement.value;
+      var fecha = (<HTMLInputElement>document.getElementById('fecha').attributes[2].ownerDocument.activeElement).value;
+      var texto = (<HTMLInputElement>document.getElementById('buscar').attributes[2].ownerElement).value;
       if(isUndefined(fecha)){
         fecha = "'null'";
       }
@@ -33,8 +33,8 @@ export class AsignacionesEliminadasComponent implements OnInit {
 
     document.getElementById('buscar').addEventListener("change", (event) => {
     
-      var fecha = document.getElementById('fecha').attributes[2].ownerElement.value;
-      var texto = document.getElementById('buscar').attributes[2].ownerElement.value;
+      var fecha = (<HTMLInputElement>document.getElementById('fecha').attributes[2].ownerElement).value;
+      var texto = (<HTMLInputElement>document.getElementById('buscar').attributes[2].ownerElement).value;
       if(fecha == ''){
         fecha = "'null'";
       }

@@ -10,7 +10,7 @@ import { DataRetrieverService } from '../../data-retriever.service';
 })
 export class EstadisticasComponent implements OnInit {
 
-  asignaciones: JSON[];
+  asignaciones;
   fechaA = "";
   totalDiasVFD=0;
   totalDiasBT=0;

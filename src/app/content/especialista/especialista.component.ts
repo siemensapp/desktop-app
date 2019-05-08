@@ -24,7 +24,7 @@ export class EspecialistaComponent implements OnInit {
         campoImagen.src = URL.createObjectURL((<HTMLInputElement>event.target).files[0]);
         //Crear version base 64 de la img
         var fileReader = new FileReader();
-        fileReader.addEventListener("load", function(e){
+        fileReader.addEventListener("load", function(e:any){
            
            document.getElementById("resultadoImagen").innerHTML = e.target.result;
            
