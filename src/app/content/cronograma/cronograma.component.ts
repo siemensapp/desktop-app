@@ -102,11 +102,11 @@ export class CronogramaComponent implements OnInit {
               this.dataRetriever.getData(env.url+'/api/getInfoAssignment/'+IdEspecialista+'/'+fecha).then(data =>{
                   this.infoAsignacion2 = data as JSON;
                   console.log(this.infoAsignacion2);
-              });
               Swal.fire({
                 type: "warning",
                 title: "Seguro desea borrar esta asignacion?",
                 html: '<p style="font-family: Verdana, Geneva, Tahoma, sans-serif;">LLenar los siguientes campos</p>'+
+                'Desde <input id="desde" type="date" min="'+this.infoAsignacion2[0]['FechaInicio'].split("T")[0]+'" max="'+this.infoAsignacion2[0]['FechaFin'].split("T")[0]+'"><br><br>Hasta <input id="hasta" type="date" min="'+this.infoAsignacion2[0]['FechaInicio'].split("T")[0]+'" max="'+this.infoAsignacion2[0]['FechaFin'].split("T")[0]+'">' +
                 '<input id="input1" maxlength="60" placeholder="Sujeto/Entidad Cancelando el Servicio" style="height: 35px; width:80%; margin-top:5%;font-family: Verdana, Geneva, Tahoma, sans-serif; font-size:16px;"><br>' +
                 '<textarea id="input2" maxlength="255" placeholder="Razón Cancelación del Servicio" autocomplete="off" style="height: 60px; width:80%; margin-top:5%;font-family: Verdana, Geneva, Tahoma, sans-serif;"></textarea>',
                 showCloseButton: true,
@@ -121,10 +121,17 @@ export class CronogramaComponent implements OnInit {
                   var SC = sc.value;
                   var rc = <HTMLInputElement> document.getElementById('input2');
                   var RC = rc.value;
+                  var desde = <HTMLInputElement> document.getElementById('desde');
+                  var Desde = desde.value;
+                  var hasta = <HTMLInputElement> document.getElementById('hasta');
+                  var Hasta = hasta.value;
                   var datos = {
                             'IdEspecialista': this.infoAsignacion2[0]['IdEspecialista'],
                              'IdStatus' : this.infoAsignacion2[0]['IdStatus'],
                              'IdAsignacion' : this.infoAsignacion2[0]['IdAsignacion'],
+                             'NombreCliente' : this.infoAsignacion2[0]['NombreCliente'],
+                             'NombrePlanta' : this.infoAsignacion2[0]['NombrePlanta'],
+                             'CiudadPlanta' : this.infoAsignacion2[0]['CiudadPlanta'],
                              'FechaInicio' : this.infoAsignacion2[0]['FechaInicio'].split("T")[0],
                              'FechaFin' : this.infoAsignacion2[0]['FechaFin'].split("T")[0],
                              'CoordenadasSitio' : this.infoAsignacion2[0]['CoordenadasSitio'],
@@ -133,9 +140,12 @@ export class CronogramaComponent implements OnInit {
                              'NombreContacto' : this.infoAsignacion2[0]['NombreContacto'],
                              'TelefonoContacto' : this.infoAsignacion2[0]['TelefonoContacto'],
                              'Descripcion' : this.infoAsignacion2[0]['Descripcion'],
+                             'EmailContacto' : this.infoAsignacion2[0]['EmailContacto'],
                              'SujetoCancelacion' : SC,
                              'RazonCancelacion' : RC,
-                             'fecha' : fecha
+                             'fecha' : fecha,
+                             'Desde' : Desde,
+                             'Hasta' : Hasta
                             };
                 var url = env.url + '/api/deleteAssignment';
                 this.httpService.post(url, datos).toPromise()
@@ -158,6 +168,7 @@ export class CronogramaComponent implements OnInit {
                 })
               }
               });
+            });
           }
       });
     }

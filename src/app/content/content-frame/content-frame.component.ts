@@ -7,9 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContentFrameComponent implements OnInit {
 
-  mapCenter = [-74.183888, 4.777068];
+  mapCenter = [-74, 4.2];
   basemapType = 'topo';
-  mapZoomLevel = 16;
+  mapZoomLevel = 6;
 
   // See app.component.html
   mapLoadedEvent(status: boolean) {
