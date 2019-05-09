@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs';
 import 'rxjs/add/operator/map';
 
@@ -24,6 +24,13 @@ export class DataRetrieverService {
     console.log(this.fechaSource.value);
   }
 
+
+  private httpOptions = {
+    headers: new HttpHeaders  ({
+      'Access-Control-Allow-Origin': '*'
+    })
+  };
+
   getData( url: string ) {
     return new Promise(resolve => {
       this.http.get(url)
@@ -36,7 +43,7 @@ export class DataRetrieverService {
 
   postData( url: string, dataToSend: string ) {
     return new Promise( resolve => {
-      this.http.post( url, JSON.parse(dataToSend) ).map( result => result).subscribe(dataReceived => {
+      this.http.post( url, JSON.parse(dataToSend), this.httpOptions ).map( result => result).subscribe(dataReceived => {
         resolve(dataReceived);
       })
     })
