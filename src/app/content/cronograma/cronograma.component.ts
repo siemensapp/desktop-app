@@ -275,7 +275,7 @@ export class CronogramaComponent implements OnInit {
               }
             }
             else if(parseInt((this.Asignaciones[i]['FechaFin'].split("T")[0]).split("-")[1])>parseInt(fechaHoy.split("-")[1]) && parseInt((this.Asignaciones[i]['FechaInicio'].split("T")[0]).split("-")[1]) == parseInt(fechaHoy.split("-")[1])){
-              for(var j=(parseInt((this.Asignaciones[i]['FechaInicio'].split("T")[0]).split("-")[2])-1);j<diasDelMes;j++){
+              for(var j=(parseInt((this.Asignaciones[i]['FechaInicio'].split("T")[0]).split("-")[2])-1);j<diasDelMes-1;j++){
                 x[j].style.backgroundColor = this.setColor(this.Asignaciones[i]['IdStatus']);
               }
             }
@@ -351,12 +351,13 @@ export class CronogramaComponent implements OnInit {
                     }
                   }
                   else if(parseInt((this.Asignaciones[i]['FechaFin'].split("T")[0]).split("-")[1])>parseInt(fecha.split("-")[1]) && parseInt((this.Asignaciones[i]['FechaInicio'].split("T")[0]).split("-")[1]) == parseInt(fecha.split("-")[1])){
-                    for(var j=(parseInt((this.Asignaciones[i]['FechaInicio'].split("T")[0]).split("-")[2])-1);j<diasDelMes;j++){
+                    for(var j=(parseInt((this.Asignaciones[i]['FechaInicio'].split("T")[0]).split("-")[2])-1);j<diasDelMes-1;j++){
+                      console.log(j);
                       x[j].style.backgroundColor = this.setColor(this.Asignaciones[i]['IdStatus']);
                     }
                   }
                   else if(parseInt((this.Asignaciones[i]['FechaInicio'].split("T")[0]).split("-")[1])<parseInt(fecha.split("-")[1]) && parseInt((this.Asignaciones[i]['FechaFin'].split("T")[0]).split("-")[1])>parseInt(fecha.split("-")[1])){
-                    for(var j=0;j<diasDelMes-1;j++){
+                    for(var j=0;j<diasDelMes;j++){
                       x[j].style.backgroundColor = this.setColor(this.Asignaciones[i]['IdStatus']);
                     }
                   }
