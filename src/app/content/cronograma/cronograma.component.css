@@ -63,7 +63,7 @@
   .popup {
     margin: 70px auto;
     padding: 20px;
-    background: #009999;
+    background: lightgray;
     border-radius: 20px;
     width: 30%;
     position: relative;
@@ -84,25 +84,10 @@
     color: red;
   }
   
-  .popup .info {
-    position: absolute;
-    top: 25px;
-    right: 70px;
-    font-size: 24px;
-    font-weight: bold;
-    text-decoration: none;
-    color: #333;
-  }
-  
-  .popup .info:hover {
-    color: lightgray;
-    cursor: pointer;
-  }
-  
   .popup .estadisticas {
     position: absolute;
     top: 28px;
-    right: 100px;
+    right: 65px;
     font-size: 24px;
     font-weight: bold;
     text-decoration: none;
@@ -110,14 +95,14 @@
   }
   
   .popup .estadisticas:hover {
-    color: lightgray;
+    color: #009999;
     cursor: pointer;
   }
   
   .popup .eliminadas {
     position: absolute;
     top: 27px;
-    right: 140px;
+    right: 105px;
     font-size: 24px;
     font-weight: bold;
     text-decoration: none;
@@ -125,7 +110,7 @@
   }
   
   .popup .eliminadas:hover {
-    color: lightgray;
+    color: #009999;
     cursor: pointer;
   }
   
@@ -196,7 +181,7 @@
   
   
   .tablaEspecialistas {
-    background-color: whitesmoke;
+    background-color: white;
     border: 2px inset lightgray;
     border-radius: 8px;
     width: 50%;
@@ -219,7 +204,7 @@
   
   .tablaAsignaciones {
     margin-left: 1%;
-    background-color: whitesmoke;
+    background-color: white;
     border: 2px inset lightgray;
     border-radius: 8px;
     width: 180%;
@@ -229,10 +214,14 @@
   .tablaAsignaciones:hover {
     cursor: pointer;
   }
+
+  .linea{
+    display: flex;    
+  }
   
   .servicio {
     display: flex;
-    font-size: 22px;
+    font-size: 18px;
     font-weight: bold;
     text-align: center;
     font-family: 'Courier New', Courier, monospace;
@@ -250,11 +239,13 @@
   }
   
   .estado {
-    margin-bottom: 2%;
-    margin-left: 1%;
+    margin-left: 2%;
     margin-right: 2%;
-    border: 5px ridge white;
+    margin-bottom: 0.4%;
+    border: 6px ridge white;
     border-radius: 15px;
+    width: 20%;
+    background-color: whitesmoke;
   }
   
   #volver {
