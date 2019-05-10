@@ -27,7 +27,7 @@ body {
     margin: 0;
     height: 100%;
     float: left;
-    width: 100%;
+    width: 40vw;
   }
   
   #creacion{
@@ -48,6 +48,7 @@ body {
     font-size: 30px;
     outline: none;
     color:darkgray;
+    margin-right: 5%;
   }
   
   #home:hover{
@@ -72,7 +73,7 @@ body {
   
   a .btnNavbar {
     height:40px;
-    width: 160%;
+    width: 10vw;
     color: #009999; 
     background-color: white;
     border: ridge 1.1px #0F1923;

@@ -184,7 +184,7 @@
     background-color: white;
     border: 2px inset lightgray;
     border-radius: 8px;
-    width: 50%;
+    width: 25%;
     height: 15%;
   }
   
@@ -199,7 +199,7 @@
     font-weight: bold;
     text-align: center;
     font-family: 'Courier New', Courier, monospace;
-    font-size: 16px;
+    font-size: 1.1vw;
   }
   
   .tablaAsignaciones {
@@ -207,7 +207,7 @@
     background-color: white;
     border: 2px inset lightgray;
     border-radius: 8px;
-    width: 180%;
+    width: 60em;
     height: 15%;
   }
   
@@ -228,7 +228,7 @@
     opacity: 1;
     justify-content: center;
     align-items: center;
-    height: 40px;
+    height: 2.5vw;
   }
   
   .polig {
