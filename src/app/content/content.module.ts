@@ -15,6 +15,7 @@ import { NgCircleProgressModule } from 'ng-circle-progress';
 import { AsignacionesEliminadasComponent } from './asignaciones-eliminadas/asignaciones-eliminadas.component';
 import { JwtModule } from '@auth0/angular-jwt';
 
+
 export function tokenGetter() {
   return localStorage.getItem('access_token');
 }

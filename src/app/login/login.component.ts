@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
       else {
         // Saves user Email
         
-        localStorage.setItem('tokenApp', result['token']);
+        localStorage.setItem('tokenDesktop', result['token']);
         localStorage.setItem('user', result['user']);
 
         Swal.fire({type: "success", title: "Exito", text: 'Inicio de sesiòn exitoso.'})
