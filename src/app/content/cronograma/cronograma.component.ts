@@ -64,9 +64,20 @@ export class CronogramaComponent implements OnInit {
                 var url2 = env.url + '/api/getReportByAssignment/'+id;
                 this.dataRetriever.getData(url2).then(reportData => {
                 this.infoReporte = reportData as JSON;
+                var status;
+                if(this.infoAsignacion[0]['StatusAsignacion'] == 0){
+                  status = "Asignado - No Iniciado";
+                }
+                else if(this.infoAsignacion[0]['StatusAsignacion'] == 1){
+                  status = "Asignación Iniciada";
+                }
+                else{
+                  status = "Asignación Terminada";
+                }
                 var contenido = this.infoAsignacion[0]['NombreE'] + ' (' + this.infoAsignacion[0]['NombreT']+') - '+ this.infoAsignacion[0]['NombreS'] + '<br>'
                 + this.infoAsignacion[0]['NombreSitio'] + '<br><br>'
-                + this.infoAsignacion[0]['FechaInicio'].split("T")[0] + '  <i class="fas fa-long-arrow-alt-right"></i>  ' + this.infoAsignacion[0]['FechaFin'].split("T")[0] + '<br><br>'
+                + this.infoAsignacion[0]['FechaInicio'].split("T")[0] + '  <i class="fas fa-long-arrow-alt-right"></i>  ' + this.infoAsignacion[0]['FechaFin'].split("T")[0] + '<br>'
+                + '<p style="font-weight: bold; text-decoration: underline;">' + status + '</p>' + '<br>'
                 + 'Contacto: ' + this.infoAsignacion[0]['NombreContacto'] + ' - ' + this.infoAsignacion[0]['TelefonoContacto'];
                 if(reportData == 'false'){
                 Swal.fire({
