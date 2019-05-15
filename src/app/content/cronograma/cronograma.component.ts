@@ -207,8 +207,13 @@ export class CronogramaComponent implements OnInit {
     doc.rect(120, 30, 40, 10);
     doc.text(175, 33, "Fecha");
     doc.rect(160, 30, 40, 10);
+    doc.setFontSize(10);
+    doc.setFontStyle("bold");
+    doc.text(170, 38, this.infoReporte[0]['FechaEnvio'].split("T")[0]);
 
     //TABLA DETALLES GENERALES DEL SERVICIO
+    doc.setFontSize(8);
+    doc.setFontStyle("normal");
     doc.text(12, 53, "Cliente");
     doc.rect(10, 50, 130, 10);
     doc.setFontSize(10);
@@ -274,45 +279,180 @@ export class CronogramaComponent implements OnInit {
     var lineasDesc = doc.splitTextToSize(desc, 186);
     doc.text(12, 110, lineasDesc);
 
-    //Hoja de Tiempo
+
+    //TABLA DATOS TECNICOS (Condiciones del sistema/Estado inicial)
     doc.setFontSize(14);
     doc.setFontStyle("bold");
-    doc.text(85, 140, "Hoja de Tiempo");
+    doc.text(10, 145, "Datos Técnicos (Condiciones del Sistema/Estado Inicial)");
+
+    doc.setFontSize(8);
+    doc.setFontStyle("normal");
+    doc.text(13, 153, "Marca");
+    doc.rect(10, 150, 190, 10);
+    doc.setFontSize(10);
+    doc.setFontStyle("bold");
+    doc.text(20, 157, this.infoReporte[0]['Marca']);
+
+    doc.setFontSize(8);
+    doc.setFontStyle("normal");
+    doc.text(13, 163, "Denominación Interna - (Cliente)");
+    doc.rect(10, 160, 190, 10);
+    doc.setFontSize(10);
+    doc.setFontStyle("bold");
+    doc.text(20, 167, this.infoReporte[0]['DenominacionInterna']);
+
+    doc.setFontSize(8);
+    doc.setFontStyle("normal");
+    doc.text(13, 173, "Product Number (P/N)/MLFB/ID");
+    doc.rect(10, 170, 95, 10);
+    doc.setFontSize(10);
+    doc.setFontStyle("bold");
+    doc.text(20, 177, this.infoReporte[0]['DenominacionInterna']);
+
+    doc.setFontSize(8);
+    doc.setFontStyle("normal");
+    doc.text(108, 173, "Serial Number");
+    doc.rect(105, 170, 95, 10);
+    doc.setFontSize(10);
+    doc.setFontStyle("bold");
+    doc.text(115, 177, this.infoReporte[0]['NumeroSerial']);
+
+    doc.setFontSize(8);
+    doc.setFontStyle("normal");
+    doc.text(13, 183, "Características Técnicas");
+    doc.rect(10, 180, 190, 10);
+    doc.setFontSize(10);
+    doc.setFontStyle("bold");
+    doc.text(20, 187, this.infoReporte[0]['CaracteristicasTecnicas']);
+
+    doc.setFontSize(8);
+    doc.setFontStyle("normal");
+    doc.text(13, 193, "Estado Inicial/Antecedentes");
+    doc.rect(10, 190, 190, 10);
+    doc.setFontSize(10);
+    doc.setFontStyle("bold");
+    doc.text(20, 197, this.infoReporte[0]['EstadoInicial']);
+    
+    //ACTIVIDADES REALIZADAS
+    doc.setFontSize(12);
+    doc.setFontStyle("bold");
+    doc.text(75, 219, "Actividades Realizadas");
+    doc.rect(10, 215, 190, 40);
+    doc.setFontSize(10);
+    doc.setFontStyle("normal");
+    var act = this.infoReporte[0]['ActividadesRealizadas'];
+    var lineasAct = doc.splitTextToSize(act, 186);
+    doc.text(12, 229, lineasAct);
+
+    //INSERTAR PAGINA NUEVA
+    doc.insertPage();
+
+    //CONCLUSIONES Y RECOMENDACIONES 
+    doc.setFontSize(12);
+    doc.setFontStyle("bold");
+    doc.text(65, 24, "Conclusiones y Recomendaciones");
+    doc.rect(10, 20, 190, 40);
+    doc.setFontSize(10);
+    doc.setFontStyle("normal");
+    var conc = this.infoReporte[0]['Conclusiones'];
+    var lineasConc = doc.splitTextToSize(conc, 186);
+    doc.text(12, 34, lineasConc);
+
+    //REPUESTOS SUGERIDOS
+    doc.setFontSize(12);
+    doc.setFontStyle("bold");
+    doc.text(75, 74, "Repuestos Sugeridos");
+    doc.rect(10, 70, 190, 40);
+    doc.setFontSize(10);
+    doc.setFontStyle("normal");
+    var repu = this.infoReporte[0]['RepuestosSugeridos'];
+    var lineasRepu = doc.splitTextToSize(repu, 186);
+    doc.text(12, 84, lineasRepu);
+
+    //ACTIVIDADES PENDIENTES
+    doc.setFontSize(12);
+    doc.setFontStyle("bold");
+    doc.text(75, 124, "Actividades Pendientes");
+    doc.rect(10, 120, 190, 40);
+    doc.setFontSize(10);
+    doc.setFontStyle("normal");
+    var actP = this.infoReporte[0]['ActividadesPendientes'];
+    var lineasActP = doc.splitTextToSize(actP, 186);
+    doc.text(12, 134, lineasActP);
+
+    // //Hoja de Tiempo
+    doc.setFontSize(14);
+    doc.setFontStyle("bold");
+    doc.text(85, 180, "Hoja de Tiempo");
     doc.setFillColor(173,216,230);
     doc.setDrawColor(0,0,0);
-    doc.rect(10, 145, 30, 20, 'FD');
+    doc.rect(10, 185, 30, 20, 'FD');
 
-    doc.rect(40, 145, 80, 10, 'FD');
-    doc.rect(40, 155, 27, 10, 'FD');
-    doc.rect(67, 155, 27, 10, 'FD');
-    doc.rect(94, 155, 26, 10, 'FD');
+    doc.rect(40, 185, 80, 10, 'FD');
+    doc.rect(40, 195, 27, 10, 'FD');
+    doc.rect(67, 195, 27, 10, 'FD');
+    doc.rect(94, 195, 26, 10, 'FD');
 
-    doc.rect(120, 145, 80, 10, 'FD');
-    doc.rect(120, 155, 20, 10, 'FD');
-    doc.rect(140, 155, 20, 10, 'FD');
-    doc.rect(160, 155, 20, 10, 'FD');
-    doc.rect(180, 155, 20, 10, 'FD');
+    doc.rect(120, 185, 80, 10, 'FD');
+    doc.rect(120, 195, 20, 10, 'FD');
+    doc.rect(140, 195, 20, 10, 'FD');
+    doc.rect(160, 195, 20, 10, 'FD');
+    doc.rect(180, 195, 20, 10, 'FD');
 
     doc.setFontSize(10);
     doc.setFontStyle("normal");
-    doc.text(19, 155, "Fecha");
+    doc.text(19, 195, "Fecha");
 
-    doc.text(65, 150, "Horas Trabajadas");
-    doc.text(47, 160, "Desde");
-    doc.text(75, 160, "Hasta");
-    doc.text(97, 160, "Descuento");
+    doc.text(65, 190, "Horas Trabajadas");
+    doc.text(47, 200, "Desde");
+    doc.text(75, 200, "Hasta");
+    doc.text(97, 200, "Descuento");
 
-    doc.text(145, 150, "Clase de Trabajo");
-    doc.text(123, 160, "Servicio \nen Sitio");
-    doc.text(143, 160, "Entrena- \nmiento");
-    doc.text(161, 160, "T. de Viaje");
-    doc.text(183, 160, "T. de \nEspera");
+    doc.text(145, 190, "Clase de Trabajo");
+    doc.text(123, 200, "Servicio \nen Sitio");
+    doc.text(143, 200, "Entrena- \nmiento");
+    doc.text(161, 200, "T. de Viaje");
+    doc.text(183, 200, "T. de \nEspera");
 
     doc.setFillColor(255,255,255);
 
-    var y=165;
+    var y=205;
     var hojaDeTiempo = JSON.parse(this.infoReporte[0]['HojaTiempo']);
     Object.keys(hojaDeTiempo).forEach(key => {
+      if(y>220){
+        doc.insertPage();
+        doc.setFillColor(173,216,230);
+        doc.setDrawColor(0,0,0);
+        doc.rect(10, 10, 30, 20, 'FD');
+
+        doc.rect(40, 10, 80, 10, 'FD');
+        doc.rect(40, 20, 27, 10, 'FD');
+        doc.rect(67, 20, 27, 10, 'FD');
+        doc.rect(94, 20, 26, 10, 'FD');
+
+        doc.rect(120, 10, 80, 10, 'FD');
+        doc.rect(120, 20, 20, 10, 'FD');
+        doc.rect(140, 20, 20, 10, 'FD');
+        doc.rect(160, 20, 20, 10, 'FD');
+        doc.rect(180, 20, 20, 10, 'FD');
+        doc.setFontSize(10);
+        doc.setFontStyle("normal");
+        doc.text(19, 20, "Fecha");
+
+        doc.text(65, 15, "Horas Trabajadas");
+        doc.text(47, 25, "Desde");
+        doc.text(75, 25, "Hasta");
+        doc.text(97, 25, "Descuento");
+
+        doc.text(145, 15, "Clase de Trabajo");
+        doc.text(123, 25, "Servicio \nen Sitio");
+        doc.text(143, 25, "Entrena- \nmiento");
+        doc.text(161, 25, "T. de Viaje");
+        doc.text(183, 25, "T. de \nEspera");
+
+        y=30;
+      }
+      console.log(y);
       doc.text(13, y+4, hojaDeTiempo[key]['fecha']);
       doc.rect(10, y, 30, 8);
       doc.text(43, y+4, hojaDeTiempo[key]['desde']);
@@ -330,112 +470,7 @@ export class CronogramaComponent implements OnInit {
       doc.text(183, y+4, hojaDeTiempo[key]['tiempoEspera']);
       doc.rect(180, y, 20, 8);
       y=y+8;
-    });
-    
-    
-
-    y=y+10;
-    //TABLA DATOS TECNICOS (Condiciones del sistema/Estado inicial)
-    doc.setFontSize(14);
-    doc.setFontStyle("bold");
-    doc.text(10, y, "Datos Técnicos (Condiciones del Sistema/Estado Inicial)");
-
-    doc.setFontSize(8);
-    doc.setFontStyle("normal");
-    doc.text(13, y+8, "Marca");
-    doc.rect(10, y+5, 190, 10);
-    doc.setFontSize(10);
-    doc.setFontStyle("bold");
-    doc.text(20, y+12, this.infoReporte[0]['Marca']);
-
-    doc.setFontSize(8);
-    doc.setFontStyle("normal");
-    doc.text(13, y+18, "Denominación Interna - (Cliente)");
-    doc.rect(10, y+15, 190, 10);
-    doc.setFontSize(10);
-    doc.setFontStyle("bold");
-    doc.text(20, y+22, this.infoReporte[0]['DenominacionInterna']);
-
-    doc.setFontSize(8);
-    doc.setFontStyle("normal");
-    doc.text(13, y+28, "Product Number (P/N)/MLFB/ID");
-    doc.rect(10, y+25, 95, 10);
-    doc.setFontSize(10);
-    doc.setFontStyle("bold");
-    doc.text(20, y+32, this.infoReporte[0]['DenominacionInterna']);
-
-    doc.setFontSize(8);
-    doc.setFontStyle("normal");
-    doc.text(108, y+28, "Serial Number");
-    doc.rect(105, y+25, 95, 10);
-    doc.setFontSize(10);
-    doc.setFontStyle("bold");
-    doc.text(115, y+32, this.infoReporte[0]['NumeroSerial']);
-
-    doc.setFontSize(8);
-    doc.setFontStyle("normal");
-    doc.text(13, y+38, "Características Técnicas");
-    doc.rect(10, y+35, 190, 10);
-    doc.setFontSize(10);
-    doc.setFontStyle("bold");
-    doc.text(20, y+42, this.infoReporte[0]['CaracteristicasTecnicas']);
-
-    doc.setFontSize(8);
-    doc.setFontStyle("normal");
-    doc.text(13, y+48, "Estado Inicial/Antecedentes");
-    doc.rect(10, y+45, 190, 10);
-    doc.setFontSize(10);
-    doc.setFontStyle("bold");
-    doc.text(20, y+52, this.infoReporte[0]['EstadoInicial']);
-    y=y+55;
-    
-    //INSERTAR PAGINA NUEVA
-    doc.insertPage();
-
-    //ACTIVIDADES REALIZADAS
-    doc.setFontSize(12);
-    doc.setFontStyle("bold");
-    doc.text(75, 24, "Actividades Realizadas");
-    doc.rect(10, 20, 190, 30);
-    doc.setFontSize(10);
-    doc.setFontStyle("normal");
-    var act = this.infoReporte[0]['ActividadesRealizadas'];
-    var lineasAct = doc.splitTextToSize(act, 186);
-    doc.text(12, 34, lineasAct);
-
-    //CONCLUSIONES Y RECOMENDACIONES 
-    doc.setFontSize(12);
-    doc.setFontStyle("bold");
-    doc.text(65, 64, "Conclusiones y Recomendaciones");
-    doc.rect(10, 60, 190, 40);
-    doc.setFontSize(10);
-    doc.setFontStyle("normal");
-    var conc = this.infoReporte[0]['Conclusiones'];
-    var lineasConc = doc.splitTextToSize(conc, 186);
-    doc.text(12, 74, lineasConc);
-
-    //REPUESTOS SUGERIDOS
-    doc.setFontSize(12);
-    doc.setFontStyle("bold");
-    doc.text(75, 114, "Repuestos Sugeridos");
-    doc.rect(10, 110, 190, 30);
-    doc.setFontSize(10);
-    doc.setFontStyle("normal");
-    var repu = this.infoReporte[0]['RepuestosSugeridos'];
-    var lineasRepu = doc.splitTextToSize(repu, 186);
-    doc.text(12, 124, lineasRepu);
-
-    //ACTIVIDADES PENDIENTES
-    doc.setFontSize(12);
-    doc.setFontStyle("bold");
-    doc.text(75, 154, "Actividades Pendientes");
-    doc.rect(10, 150, 190, 30);
-    doc.setFontSize(10);
-    doc.setFontStyle("normal");
-    var actP = this.infoReporte[0]['ActividadesPendientes'];
-    var lineasActP = doc.splitTextToSize(actP, 186);
-    doc.text(12, 164, lineasActP);
-
+    });    
 
     //FIRMAS
     doc.setFontSize(10);
