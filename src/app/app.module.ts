@@ -10,11 +10,13 @@ import { JwtModule } from '@auth0/angular-jwt';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { PushNotificationService } from './pushService/push-notification.service';
+import { FiltrosComponent } from './filtros/filtros.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    FiltrosComponent
   ],
   imports: [
     JwtModule,

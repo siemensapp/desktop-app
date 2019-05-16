@@ -1,0 +1,30 @@
+<div id="contenido">
+  <div id="filtros">
+    <select (change)="filtrarCliente()" class="combo" *ngIf="nombres | async as pokemones">
+      <option class="opciones" *ngFor="let pokemon of pokemones">{{pokemon.name}}
+      </option>
+    </select>
+    <select class="combo" *ngIf="nombres | async as pokemones">
+      <option class="opciones" *ngFor="let pokemon of pokemones">{{pokemon.name}}
+      </option>
+    </select>
+    <select class="combo" *ngIf="nombres | async as pokemones">
+      <option class="opciones" *ngFor="let pokemon of pokemones">{{pokemon.name}}
+      </option>
+    </select>
+    <input type="button" id="buscar" value="&#xf002; BUSCAR" (click)="mostrar()"/>
+
+
+  </div>
+
+  <div id="tablaResultados">
+    <table id="tablaHojas">
+      <th id="header"> Hojas de Vida Equipos </th>
+      <tr>
+        <td class="lineas">
+          PRIMERA LINEA
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
